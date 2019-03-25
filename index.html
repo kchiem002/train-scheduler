@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Hogwarts Express Schedule</title>
+    <link rel="icon" type="image/icon" href="./assets/images/train-icon.png">
+    <link type="text/css" rel="stylesheet" href="./assets/css/reset.css">
+    <link type="text/css" rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text" rel="stylesheet">
+</head>
+<body>
+<header>
+    <h1>The Hogwarts Express</h1>
+</header>
+
+<div class="container" id="train-schedule">
+    <h2>Current Train Schedule</h2>
+    <table>
+        <tr>
+            <th>Train Name</th>
+            <th>Destination</th>
+            <th>Frequency (Min)</th>
+            <th>Next Arrival</th>
+            <th>Minutes Away</th>
+        </tr>
+    </table>
+    <div id="test">
+            Hello
+    </div>
+</div>
+<div class="container" id="add-train">
+    <h2>Add Train</h2>
+    <form>
+        <p>
+            <label for="train-name">Train Name:</label>
+            <br>
+            <input type="text" id="input-train-name">
+        </p>
+        <p>
+            <label for="destination">Destination:</label>
+            <br>
+            <input type="text" id="input-destination">
+        </p>
+        <p>
+            <label for="first-train-time">First Train Time:</label>
+            <br>
+            <input type="time" id="input-train-time">
+        </p>
+        <p>
+            <label for="frequency">Frequency (Min):</label>
+            <br>
+            <input type="number" id="input-frequency">
+        </p>
+        <button id="submit">Submit</button>
+    </form>
+</div>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+<script type="text/javascript" src="./assets/javascript/app.js"></script>
+</body>
+</html>

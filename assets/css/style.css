@@ -1,0 +1,78 @@
+html {
+    box-sizing: border-box;
+    background-color: black;
+    font-family: 'Crimson Text', serif;
+    background: url("../images/hp-background.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+@font-face {
+    font-family: HarryPotterFont;
+    src: url(HARRYP__.TTF);
+}
+
+h1 {
+    background-color: maroon;
+    font-size: 60pt;
+    margin: 0;
+    padding: 15px;
+    font-family: HarryPotterFont;
+    text-align: center;
+    border-bottom: 10pt double goldenrod;
+}
+
+h2 {
+    background-color: goldenrod;
+    padding: 5px;
+    font-size: 17pt;
+    margin-bottom: 5px;
+}
+
+.container {
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border: 1px solid goldenrod;
+    background-color: maroon;
+    width: 80%;
+    margin: auto;
+}
+
+th {
+    color: black;
+    padding: 3px;
+    border: 1px solid black;
+}
+
+table {
+    border: 1px solid black;
+    padding: 20px;
+    margin: auto;
+    width: 80%;
+    font-size: 15pt;
+}
+
+form {
+    color: black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p {
+    font-size: 15pt;
+    padding: 5px;
+}
+
+input {
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    width: 80%
+}
