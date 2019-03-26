@@ -14,14 +14,17 @@ html {
     src: url(HARRYP__.TTF);
 }
 
-h1 {
+header {
     background-color: maroon;
-    font-size: 60pt;
-    margin: 0;
     padding: 15px;
+    border-bottom: 10pt double goldenrod;
+    box-shadow: 5px 10px 8px black;
+}
+
+h1 {
+    font-size: 60pt;
     font-family: HarryPotterFont;
     text-align: center;
-    border-bottom: 10pt double goldenrod;
 }
 
 h2 {
@@ -29,6 +32,7 @@ h2 {
     padding: 5px;
     font-size: 17pt;
     margin-bottom: 5px;
+    border-bottom: 5px double maroon;
 }
 
 .container {
@@ -41,26 +45,25 @@ h2 {
     background-color: maroon;
     width: 80%;
     margin: auto;
-}
-
-th {
-    color: black;
-    padding: 3px;
-    border: 1px solid black;
+    margin-top: 30px;
 }
 
 table {
     border: 1px solid black;
     padding: 20px;
-    margin: auto;
-    width: 80%;
     font-size: 15pt;
+    margin: 20px;
+    background-color: white;
+}
+
+td {
+    padding: 10px;
+    border: 1px solid black;  
 }
 
 form {
     color: black;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 20px;
 }
 
 p {
@@ -74,5 +77,17 @@ input {
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
-    width: 80%
+    width: 100%
+}
+
+#submit {
+    font-size: 15pt;
+    background-color: goldenrod;
+    margin: 5px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    font-family: 'Crimson Text', serif;
 }
