@@ -9,44 +9,80 @@ var config = {
   firebase.initializeApp(config);
 
 let db = firebase.firestore()
-let trainName
-let destination
-let frequency
+let trainName = document.querySelector('#input-train-name').value
+let destination = document.querySelector('#input-destination').value
+let startTime = document.querySelector('#input-train-time').value
+let frequency = document.querySelector('#input-frequency').value
+
+let unixCurrTime = moment().unix() / 60
+let unixStartTime = moment(startTime).unix() / 60
+let timeDiff = unixStartTime - unixCurrTime
+let timeRemain = timeDiff % frequency
+let untilArrival = frequency - timeRemain
+let nextArrival = moment().add(untilArrival, "minutes").format("hh:mm")
+let departTime = moment(startTime, 'hh:mm').unix()
+
+// //calculate next arrival time
+// const calcArrival = (depart, freq) => {
+//     //convert departure and current time into unix minutes
+//     departTime = moment(depart, 'HH:mm').unix() / 60
+//     console.log(moment().format('hh:mm a'))
+
+//     //if the departure time is later
+//     // if (departTime > currTime)
+//     //     let nextArr = moment(startTime).add(freq, 'minutes')
+//     //     return moment(nextArrival).format('hh:mm a')
+// }
 
 document.querySelector('#submit').addEventListener('click', e => {
     e.preventDefault()
     let id = db.collection('train').doc().id
-    trainName = document.querySelector('#input-train-name').value
-    destination = document.querySelector('#input-destination').value
-    time = document.querySelector('#input-train-time').value
-    frequency = document.querySelector('#input-frequency').value
     db.collection('train').doc().set({
         trainName: document.querySelector('#input-train-name').value,
         destination: document.querySelector('#input-destination').value,
-        time: document.querySelector('#input-train-time').value,
+        startTime: document.querySelector('#input-train-time').value,
         frequency: document.querySelector('#input-frequency').value,
     })
     trainName = document.querySelector('#input-train-name').value = ''
     destination = document.querySelector('#input-destination').value = ''
-    time = document.querySelector('#input-train-time').value = ''
+    startTime = document.querySelector('#input-train-time').value = ''
     frequency = document.querySelector('#input-frequency').value = ''
+})
+
+document.querySelector('#train-table').addEventListener('click', e => {
+    if (e.target.className === 'remove-train') {
+    }
 })
 
 db.collection('train').onSnapshot(snap => {
     document.querySelector('#train-table').innerHTML = ''
-    snap.docs.forEach(doc => {
+    document.querySelector('#train-table').innerHTML = `
+    <tr>
+        <th>Train Name</th>
+        <th>Destination</th>
+        <th>Frequency</th>
+        <th>Next Arrival</th>
+        <th>Minutes Away</th>
+        <th>Action</th>
+    </tr>`
 
-        let { trainName, destination, time, frequency } = doc.data()
-        let nextArrival = time
+    snap.docs.forEach(doc => {
+        let { trainName, destination, startTime, frequency } = doc.data()
         let docElem = document.createElement('tr')
         docElem.innerHTML = `
             <td>${trainName}</td>
             <td>${destination}</td>
             <td>${frequency} Minutes</td>
             <td>${nextArrival} A.M.</td>
+            <td>${untilArrival}</td>
+            <td><button class="remove-train">Remove Train</button></td>
             `
         document.querySelector('#train-table').appendChild(docElem)
-        console.log(docElem)
     })
 })
 
+const displayTime = () => {
+    document.querySelector('#display-current-time').innerHTML = `Current Time: ${moment().format('LTS')}`
+}
+
+setInterval(displayTime, 1000)

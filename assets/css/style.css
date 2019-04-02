@@ -25,6 +25,7 @@ h1 {
     font-size: 60pt;
     font-family: HarryPotterFont;
     text-align: center;
+    margin: 10px;
 }
 
 h2 {
@@ -56,9 +57,13 @@ table {
     background-color: white;
 }
 
-td {
+td, th {
     padding: 10px;
     border: 1px solid black;  
+}
+
+th {
+    background-color: goldenrod;
 }
 
 form {
@@ -90,4 +95,11 @@ input {
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
     font-family: 'Crimson Text', serif;
+}
+
+#display-current-time {
+    padding: 5px;
+    font-size: 30pt;
+    text-align: center;
+    background-color: goldenrod;
 }
