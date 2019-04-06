@@ -64,7 +64,7 @@ db.collection('train').onSnapshot(snap => {
         let { trainName, destination, startTime, frequency } = doc.data()
         let docElem = document.createElement('tr')
         
-        let startTimeConvert = moment(startTime, 'HH,mm').subtract(1, 'year')
+        let startTimeConvert = moment(startTime, 'HH,mm')
         let currentTime = moment()
 
         let timeDifference = moment().diff(moment(startTimeConvert), 'minutes')
@@ -77,7 +77,7 @@ db.collection('train').onSnapshot(snap => {
             <td>${trainName}</td>
             <td>${destination}</td>
             <td>${frequency} Minutes</td>
-            <td>${nextArrival} A.M.</td>
+            <td>${moment(nextArrival).format('hh:mm')} A.M.</td>
             <td>${minAway} Minutes</td>
             `
         document.querySelector('#train-table').appendChild(docElem)
