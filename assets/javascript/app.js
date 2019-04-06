@@ -49,11 +49,6 @@ document.querySelector('#submit').addEventListener('click', e => {
     frequency = document.querySelector('#input-frequency').value = ''
 })
 
-document.querySelector('#train-table').addEventListener('click', e => {
-    if (e.target.className === 'remove-train') {
-    }
-})
-
 db.collection('train').onSnapshot(snap => {
     document.querySelector('#train-table').innerHTML = ''
     document.querySelector('#train-table').innerHTML = `
@@ -69,16 +64,26 @@ db.collection('train').onSnapshot(snap => {
     snap.docs.forEach(doc => {
         let { trainName, destination, startTime, frequency } = doc.data()
         let docElem = document.createElement('tr')
+        
+        let startTimeConvert = moment(startTime, 'HH,mm').subtract(1, 'year')
+        let currentTime = moment()
+
+        let timeDifference = moment().diff(moment(startTimeConvert), 'minutes')
+        let timeRemaining = timeDifference % frequency
+        let minAway = frequency - timeRemaining
+
+        let nextArrival = moment().add(minAway, 'minutes')
+
         docElem.innerHTML = `
             <td>${trainName}</td>
             <td>${destination}</td>
             <td>${frequency} Minutes</td>
             <td>${nextArrival} A.M.</td>
-            <td>${untilArrival}</td>
-            <td><button class="remove-train">Remove Train</button></td>
+            <td>${minAway}</td>
             `
         document.querySelector('#train-table').appendChild(docElem)
     })
+
 })
 
 const displayTime = () => {
