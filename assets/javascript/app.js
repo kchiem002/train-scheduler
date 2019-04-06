@@ -58,7 +58,6 @@ db.collection('train').onSnapshot(snap => {
         <th>Frequency</th>
         <th>Next Arrival</th>
         <th>Minutes Away</th>
-        <th>Action</th>
     </tr>`
 
     snap.docs.forEach(doc => {
@@ -79,7 +78,7 @@ db.collection('train').onSnapshot(snap => {
             <td>${destination}</td>
             <td>${frequency} Minutes</td>
             <td>${nextArrival} A.M.</td>
-            <td>${minAway}</td>
+            <td>${minAway} Minutes</td>
             `
         document.querySelector('#train-table').appendChild(docElem)
     })
